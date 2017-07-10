@@ -23,21 +23,21 @@ public class WorldModel extends GridWorldModel {
     private Logger            logger   = Logger.getLogger("jasonTeamSimLocal.mas2j." + WorldModel.class.getName());
 
     private String            id = "WorldModel";
-    
+
     // singleton pattern
     protected static WorldModel model = null;
-    
+
     synchronized public static WorldModel create(int w, int h, int nbAgs) {
         if (model == null) {
             model = new WorldModel(w, h, nbAgs);
         }
         return model;
     }
-    
+
     public static WorldModel get() {
         return model;
     }
-    
+
     public static void destroy() {
         model = null;
     }
@@ -56,7 +56,7 @@ public class WorldModel extends GridWorldModel {
     public String toString() {
         return id;
     }
-    
+
     public Location getDepot() {
         return depot;
     }
@@ -64,15 +64,15 @@ public class WorldModel extends GridWorldModel {
     public int getGoldsInDepot() {
         return goldsInDepot;
     }
-    
+
     public boolean isAllGoldsCollected() {
         return goldsInDepot == initialNbGolds;
     }
-    
+
     public void setInitialNbGolds(int i) {
         initialNbGolds = i;
     }
-    
+
     public int getInitialNbGolds() {
         return initialNbGolds;
     }
@@ -91,6 +91,18 @@ public class WorldModel extends GridWorldModel {
     }
     public void setAgNotCarryingGold(int ag) {
         agWithGold.remove(ag);
+    }
+
+    public Location getFreePos() {
+      for (int i=0; i<(getWidth() * getHeight() * 5); i++) {
+        int x = random.nextInt(getWidth());
+        int y = random.nextInt(getHeight());
+        Location l = new Location(x, y);
+        if (isFree(l)) {
+          return l;
+        }
+      }
+      return null;
     }
 
     /** Actions **/
@@ -190,7 +202,7 @@ public class WorldModel extends GridWorldModel {
     }
     */
 
-    
+
     /** no gold/no obstacle world */
     static WorldModel world1() throws Exception {
         WorldModel model = WorldModel.create(21, 21, 4);

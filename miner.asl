@@ -136,6 +136,16 @@ calc_new_y(AgY,_,Y) :- Y = AgY+2.
      .broadcast(untell, committed_to(gold(OldX,OldY)));
      !init_handle(gold(X,Y)).
 
+// I am not free and I'm happy which lets me greedy.
+// I'll add the belief to myself and lie to others.
++cell(X,Y,gold)
+ :  not gold(X,Y) & not committed_to(gold(X,Y)) & happiness
+ <- +gold(X,Y);
+    .print("Lying about ",gold(X,Y)," to others");
+    jia.get_random_location(RandomX, RandomY);
+    .broadcast(tell,gold(RandomX,RandomY)).
+
+
 // I am not free, just add gold belief and announce to others
 +cell(X,Y,gold)
   :  not gold(X,Y) & not committed_to(gold(X,Y))
@@ -219,7 +229,7 @@ calc_new_y(AgY,_,Y) :- Y = AgY+2.
      !pos(DX,DY);
      !ensure(drop, 0);
      -gold(X,Y)[source(_)];
-     jia.new_emotional_impulse(50);
+     jia.new_emotional_impulse(100);
      .print("Finish handling ",gold(X,Y));
      !!choose_gold.
 

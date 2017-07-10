@@ -9,7 +9,7 @@ public class GoldGenerator implements Runnable {
   WorldView view;
 
   protected Random random = new Random();
-  private static final int SLEEP_TIME = 2000;
+  private static final int SLEEP_TIME = 1000;
 
   public GoldGenerator(WorldModel newModel, WorldView newView) {
     model = newModel;
@@ -28,23 +28,11 @@ public class GoldGenerator implements Runnable {
   }
 
   public void generateRandomGold() {
-    Location l = getFreePos();
+    Location l = model.getFreePos();
 
     model.add(WorldModel.GOLD, l.y, l.x);
     model.setInitialNbGolds(model.getInitialNbGolds()+1);
     view.update(l.y, l.x);
     view.udpateCollectedGolds();
-  }
-
-  public Location getFreePos() {
-    for (int i=0; i<(model.getWidth() * model.getHeight() * 5); i++) {
-      int x = random.nextInt(model.getWidth());
-      int y = random.nextInt(model.getHeight());
-      Location l = new Location(x, y);
-      if (model.isFree(l)) {
-        return l;
-      }
-    }
-    return null;
   }
 }
