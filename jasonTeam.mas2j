@@ -6,7 +6,7 @@
 MAS miners {
     infrastructure: Centralised
 
-    environment: mining.MiningPlanet(3,50,yes)
+    environment: mining.MiningPlanet(2,120,yes)
         // parameters: 1. environment configuration id (from 1 to 3)
         //             2. sleep time (in ms) after each action
         //             3. whether display the gui
@@ -14,5 +14,5 @@ MAS miners {
     agents:
         leader;
         miner #4
-            agentClass lib.EmotionalAgent;     
+            agentClass lib.EmotionalAgent;
 }

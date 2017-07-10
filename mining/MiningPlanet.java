@@ -19,6 +19,7 @@ public class MiningPlanet extends jason.environment.Environment {
     WorldModel model;
     WorldView view;
     Thread wasabiHandler;
+    Thread goldGenerator;
 
     int simId = 3; // type of environment
     int nbWorlds = 3;
@@ -49,6 +50,10 @@ public class MiningPlanet extends jason.environment.Environment {
 
         wasabiHandler = new Thread(WasabiHandler.getInstance());
         wasabiHandler.start();
+
+        goldGenerator = new Thread(new GoldGenerator(model, view));
+        goldGenerator.start();
+
     }
 
     public int getSimId() {
@@ -64,6 +69,7 @@ public class MiningPlanet extends jason.environment.Environment {
         running = false;
         super.stop();
         wasabiHandler.stop();
+        goldGenerator.stop();
     }
 
     @Override
