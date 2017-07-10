@@ -1,0 +1,152 @@
+[leader] Defining quadrants for 35x35 simulation 3
+[leader] Finished all quadrs for 3
+[miner1] Gold perceived: gold(1,1)
+[miner4] Gold perceived: gold(20,20)
+[leader] - InitPos miner2 is 20x0
+[miner1] Going for gold(1,1)
+[miner4] Going for gold(20,20)
+[leader] - InitPos miner3 is 6x26
+[miner1] No longer free while waiting for quadrant.
+[miner1] Handling gold(1,1) now.
+[leader] - InitPos miner1 is 1x0
+[miner4] No longer free while waiting for quadrant.
+[miner4] Handling gold(20,20) now.
+[miner4] Announcing gold(20,21) to others
+[miner4] I've reached 20x20
+[leader] * InitPos miner4 is 20x20
+[leader] bid from miner2 for gold(20,21) is 21
+[leader] bid from miner3 for gold(20,21) is 19
+[leader] bid from miner1 for gold(20,21) is 10000
+[leader] miner1's Quadrant is: 1
+[leader] Gold gold(20,21) was allocated to miner3 options were [op(10000,miner1),op(19,miner3),op(21,miner2)]
+[miner3] Gold gold(20,21) allocated to miner3
+[miner3] Going for gold(20,21)
+[miner3] Handling gold(20,21) now.
+[leader] miner2's Quadrant is: 2
+[leader] miner3's Quadrant is: 3
+[miner3] No longer free while waiting for quadrant.
+[leader] miner4's Quadrant is: 4
+[miner1] I've reached 1x1
+[miner2] in Q1 to 34x0
+[miner4] I've reached 16x16
+[WorldModel] Agent 4 carried a gold to depot!
+[miner4] Finish handling gold(20,20)
+[miner4] in no Q, going to X1
+[miner2] in Q2 to 17x2
+[miner4] Gold perceived: gold(20,21)
+[miner4] Dropping around(_,_) desires and intentions to handle gold(20,21)
+[miner4] Going for gold(20,21)
+[miner4] Handling gold(20,21) now.
+[miner4] I've reached 20x21
+[miner3] miner4 has taken gold(20,21) that I am pursuing! Dropping my intention.
+[miner4] I've reached 16x16
+[WorldModel] Agent 4 carried a gold to depot!
+[miner4] Finish handling gold(20,21)
+[miner1] I've reached 16x16
+[miner2] in Q3 to 34x4
+[WorldModel] Agent 1 carried a gold to depot!
+[miner1] Finish handling gold(1,1)
+[miner2] Gold perceived: gold(19,2)
+[miner2] Dropping around(_,_) desires and intentions to handle gold(19,2)
+[miner2] Going for gold(19,2)
+[miner2] Handling gold(19,2) now.
+[miner2] I've reached 19x2
+[miner4] in no Q, going to X1
+[leader] -- END 3 --
+[leader] Defining quadrants for 35x35 simulation 2
+[leader] Finished all quadrs for 2
+[miner1] Gold perceived: gold(1,1)
+[miner4] Gold perceived: gold(19,20)
+[leader] - InitPos miner3 is 3x20
+[miner1] Going for gold(1,1)
+[leader] - InitPos miner2 is 20x0
+[miner4] Going for gold(19,20)
+[miner1] Handling gold(1,1) now.
+[leader] - InitPos miner1 is 1x0
+[miner4] Giving up current gold gold(19,20) to handle gold(20,20) which I am seeing!
+[miner4] Announcing gold(19,20) to others
+[miner4] Going for gold(20,20)
+[miner4] Handling gold(20,20) now.
+[miner4] Announcing gold(19,21) to others
+[leader] bid from miner2 for gold(19,20) is 21
+[leader] bid from miner1 for gold(19,20) is 10000
+[miner4] Announcing gold(20,21) to others
+[leader] bid from miner3 for gold(19,20) is 16
+[miner4] I've reached 20x20
+[leader] Gold gold(19,20) was allocated to miner3 options were [op(16,miner3),op(10000,miner1),op(21,miner2)]
+[miner3] Gold gold(19,20) allocated to miner3
+[miner3] Going for gold(19,20)
+[miner3] Handling gold(19,20) now.
+[leader] bid from miner2 for gold(19,21) is 22
+[leader] bid from miner1 for gold(19,21) is 10000
+[leader] * InitPos miner4 is 20x20
+[leader] bid from miner3 for gold(19,21) is 17
+[leader] bid from miner3 for gold(20,21) is 10000
+[leader] Gold gold(19,21) was allocated to miner3 options were [op(17,miner3),op(10000,miner1),op(22,miner2)]
+[miner3] I can not handle gold(19,21) anymore!
+[miner3] (Re)announcing gold(19,21) to others
+[leader] bid from miner1 for gold(20,21) is 10000
+[leader] bid from miner2 for gold(20,21) is 10000
+[leader] could not allocate gold gold(20,21)
+[leader] bid from miner2 for gold(19,21) is 10000
+[leader] could not allocate gold gold(20,21)
+[leader] bid from miner4 for gold(19,21) is 10000
+[leader] bid from miner1 for gold(19,21) is 10000
+[leader] could not allocate gold gold(20,21)
+[leader] could not allocate gold gold(19,21)
+[leader] could not allocate gold gold(19,21)
+[leader] could not allocate gold gold(19,21)
+[leader] miner1's Quadrant is: 1
+[leader] miner2's Quadrant is: 2
+[miner1] -- END 3 --
+[miner1] No longer free while waiting for quadrant.
+[leader] miner3's Quadrant is: 3
+[leader] miner4's Quadrant is: 4
+[miner2] -- END 3 --
+[miner3] -- END 3 --
+[miner3] No longer free while waiting for quadrant.
+[miner4] -- END 3 --
+[miner4] No longer free while waiting for quadrant.
+[WorldModel] Agent 2 is trying the pick gold, but there is no gold at 20x0!
+[miner4] Announcing gold(20,22) to others
+[leader] bid from miner1 for gold(20,22) is 10000
+[leader] bid from miner3 for gold(20,22) is 10000
+[miner1] I've reached 1x1
+[leader] bid from miner2 for gold(20,22) is 23
+[leader] Gold gold(20,22) was allocated to miner2 options were [op(23,miner2),op(10000,miner3),op(10000,miner1)]
+[miner2] Gold gold(20,22) allocated to miner2
+[miner2] Dropping around(_,_) desires and intentions to handle gold(20,22)
+[miner2] Going for gold(20,22)
+[miner2] Handling gold(20,22) now.
+[miner4] Announcing gold(15,20) to others
+[leader] bid from miner2 for gold(15,20) is 10000
+[leader] bid from miner1 for gold(15,20) is 10000
+[leader] bid from miner3 for gold(15,20) is 10000
+[leader] could not allocate gold gold(15,20)
+[miner3] Giving up current gold gold(19,20) to handle gold(15,20) which I am seeing!
+[miner3] Announcing gold(19,20) to others
+[leader] bid from miner2 for gold(19,20) is 10000
+[miner3] Going for gold(15,20)
+[leader] bid from miner4 for gold(19,20) is 10000
+[miner3] Handling gold(15,20) now.
+[leader] bid from miner1 for gold(19,20) is 10000
+[leader] could not allocate gold gold(19,20)
+[miner3] I've reached 15x20
+[miner2] Giving up current gold gold(20,22) to handle gold(20,13) which I am seeing!
+[miner2] Announcing gold(20,22) to others
+[miner2] Going for gold(20,13)
+[leader] bid from miner4 for gold(20,22) is 10000
+[miner2] Handling gold(20,13) now.
+[leader] bid from miner3 for gold(20,22) is 10000
+[leader] bid from miner1 for gold(20,22) is 10000
+[leader] could not allocate gold gold(20,22)
+[leader] could not allocate gold gold(20,22)
+[miner2] I've reached 20x13
+[miner4] I've reached 5x27
+[WorldModel] Agent 4 carried a gold to depot!
+[miner4] Finish handling gold(20,20)
+[miner4] Uncommitted gold distances: [d(20,gold(20,22)),d(21,gold(20,21)),d(20,gold(19,21)),d(21,gold(19,20))]4
+[miner4] Next gold is gold(19,21)
+[miner4] Handling gold(19,21) now.
+[miner3] I've reached 5x27
+[miner4] Failed next_step to 19x21 fixing and trying again!
