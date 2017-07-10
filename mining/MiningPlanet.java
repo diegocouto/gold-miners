@@ -10,29 +10,32 @@ import jason.environment.grid.Location;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import lib.WasabiHandler;
+
 public class MiningPlanet extends jason.environment.Environment {
 
     private Logger logger = Logger.getLogger("jasonTeamSimLocal.mas2j." + MiningPlanet.class.getName());
-    
-    WorldModel  model;
-    WorldView   view;
-    
-    int     simId    = 3; // type of environment
-    int     nbWorlds = 3;
 
-    int     sleep    = 0;
-    boolean running  = true;
-    boolean hasGUI   = true;
-    
+    WorldModel model;
+    WorldView view;
+    Thread wasabiHandler;
+
+    int simId = 3; // type of environment
+    int nbWorlds = 3;
+
+    int sleep = 0;
+    boolean running = true;
+    boolean hasGUI = true;
+
     public static final int SIM_TIME = 60;  // in seconds
 
-    Term                    up       = Literal.parseLiteral("do(up)");
-    Term                    down     = Literal.parseLiteral("do(down)");
-    Term                    right    = Literal.parseLiteral("do(right)");
-    Term                    left     = Literal.parseLiteral("do(left)");
-    Term                    skip     = Literal.parseLiteral("do(skip)");
-    Term                    pick     = Literal.parseLiteral("do(pick)");
-    Term                    drop     = Literal.parseLiteral("do(drop)");
+    Term up    = Literal.parseLiteral("do(up)");
+    Term down  = Literal.parseLiteral("do(down)");
+    Term right = Literal.parseLiteral("do(right)");
+    Term left  = Literal.parseLiteral("do(left)");
+    Term skip  = Literal.parseLiteral("do(skip)");
+    Term pick  = Literal.parseLiteral("do(pick)");
+    Term drop  = Literal.parseLiteral("do(drop)");
 
     public enum Move {
         UP, DOWN, RIGHT, LEFT
@@ -40,15 +43,18 @@ public class MiningPlanet extends jason.environment.Environment {
 
     @Override
     public void init(String[] args) {
-        hasGUI = args[2].equals("yes"); 
+        hasGUI = args[2].equals("yes");
         sleep  = Integer.parseInt(args[1]);
         initWorld(Integer.parseInt(args[0]));
+
+        wasabiHandler = new Thread(WasabiHandler.getInstance());
+        wasabiHandler.start();
     }
-    
+
     public int getSimId() {
         return simId;
     }
-    
+
     public void setSleep(int s) {
         sleep = s;
     }
@@ -57,6 +63,7 @@ public class MiningPlanet extends jason.environment.Environment {
     public void stop() {
         running = false;
         super.stop();
+        wasabiHandler.stop();
     }
 
     @Override
@@ -66,7 +73,7 @@ public class MiningPlanet extends jason.environment.Environment {
             if (sleep > 0) {
                 Thread.sleep(sleep);
             }
-            
+
             // get the agent id based on its name
             int agId = getAgIdBasedOnName(ag);
 
@@ -102,7 +109,7 @@ public class MiningPlanet extends jason.environment.Environment {
     private int getAgIdBasedOnName(String agName) {
         return (Integer.parseInt(agName.substring(5))) - 1;
     }
-    
+
     public void initWorld(int w) {
         simId = w;
         try {
@@ -122,13 +129,13 @@ public class MiningPlanet extends jason.environment.Environment {
                 view.setEnv(this);
                 view.udpateCollectedGolds();
             }
-            updateAgsPercept();        
+            updateAgsPercept();
             informAgsEnvironmentChanged();
         } catch (Exception e) {
             logger.warning("Error creating world "+e);
         }
     }
-    
+
     public void endSimulation() {
         addPercept(Literal.parseLiteral("end_of_simulation(" + simId + ",0)"));
         informAgsEnvironmentChanged();
@@ -168,7 +175,7 @@ public class MiningPlanet extends jason.environment.Environment {
         updateAgPercept(agName, l.x + 1, l.y + 1);
     }
 
-    
+
     private void updateAgPercept(String agName, int x, int y) {
         if (model == null || !model.inGrid(x,y)) return;
         if (model.hasObject(WorldModel.OBSTACLE, x, y)) {
