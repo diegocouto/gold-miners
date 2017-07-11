@@ -131,8 +131,8 @@ calc_new_y(AgY,_,Y) :- Y = AgY+2.
      .drop_desire(handle(gold(OldX,OldY)));
      .print("Giving up current gold ",gold(OldX,OldY),
             " to handle ",gold(X,Y)," which I am seeing!");
-     .print("Announcing ",gold(OldX,OldY)," to others");
-     .broadcast(tell,gold(OldX,OldY));
+     .print("Announcing ",gold(OldX,OldY)," to others (non liars)");
+     .broadcast_to_non_liars(tell,gold(OldX,OldY));
      .broadcast(untell, committed_to(gold(OldX,OldY)));
      !init_handle(gold(X,Y)).
 
@@ -150,8 +150,8 @@ calc_new_y(AgY,_,Y) :- Y = AgY+2.
 +cell(X,Y,gold)
   :  not gold(X,Y) & not committed_to(gold(X,Y))
   <- +gold(X,Y);
-     .print("Announcing ",gold(X,Y)," to others");
-     .broadcast(tell,gold(X,Y)).
+     .print("Announcing ",gold(X,Y)," to others (non liars)");
+     .broadcast_to_non_liars(tell,gold(X,Y)).
 
 // someone else sent me a gold location
 +gold(X1,Y1)[source(A)]
@@ -234,8 +234,10 @@ calc_new_y(AgY,_,Y) :- Y = AgY+2.
      !!choose_gold.
 
 // if ensure(pick/drop) failed, pursue another gold
--!handle(G) : G
+-!handle(G) : G[source(A)]
   <- .print("failed to catch gold ",G);
+     .print(A, " is a liar!");
+     +liar(A);
      .abolish(G); // ignore source
      !!choose_gold.
 -!handle(G) : true
