@@ -15,10 +15,11 @@ public class WorldModel extends GridWorldModel {
     public static final int   DEPOT = 32;
     public static final int   ENEMY = 64;
 
-    Location                  depot;
-    Set<Integer>              agWithGold;  // which agent is carrying gold
-    int                       goldsInDepot   = 0;
-    int                       initialNbGolds = 0;
+    Location depot;
+    Set<Integer> agWithGold;  // which agent is carrying gold
+    int goldsInDepot = 0;
+    int initialNbGolds = 0;
+    int[] goldCollectedPerAgent;
 
     private Logger            logger   = Logger.getLogger("jasonTeamSimLocal.mas2j." + WorldModel.class.getName());
 
@@ -45,6 +46,7 @@ public class WorldModel extends GridWorldModel {
     private WorldModel(int w, int h, int nbAgs) {
         super(w, h, nbAgs);
         agWithGold = new HashSet<Integer>();
+        goldCollectedPerAgent = new int[nbAgs];
     }
 
     public String getId() {
@@ -156,6 +158,7 @@ public class WorldModel extends GridWorldModel {
             if (l.equals(getDepot())) {
                 goldsInDepot++;
                 logger.info("Agent " + (ag + 1) + " carried a gold to depot!");
+                goldCollectedPerAgent[ag]++;
             } else {
                 add(WorldModel.GOLD, l.x, l.y);
             }

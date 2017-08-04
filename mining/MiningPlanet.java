@@ -145,6 +145,12 @@ public class MiningPlanet extends jason.environment.Environment {
     public void endSimulation() {
         addPercept(Literal.parseLiteral("end_of_simulation(" + simId + ",0)"));
         informAgsEnvironmentChanged();
+
+        logger.info("Results per agent:");
+        for (int i = 0; i < model.goldCollectedPerAgent.length; i++) {
+          logger.info("Agent " + (i + 1) + ": " + model.goldCollectedPerAgent[i]);
+        }
+
         if (view != null) view.setVisible(false);
         WorldModel.destroy();
     }
